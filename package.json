@@ -1,0 +1,23 @@
+{
+  "name": "things-to-do",
+  "version": "1.0.0",
+  "description": "A To-do list app that will use HTML/CSS, JavaScript, Firebase API and NoSQL.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "crypto": "^1.0.1",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.11.0",
+    "path": "^0.12.7",
+    "session": "^0.1.0"
+  }
+}

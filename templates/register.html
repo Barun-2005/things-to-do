@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <title>Register</title>
+    <link rel="stylesheet" href="/css/register.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Register for To-Do List</h1>
+        <form action="/register" method="post" id="passwordForm">
+            <label for="email">Enter Your Email Id or Username</label><br>
+            <input type="text" name="username" id="email" placeholder="Enter Your Email Id or Username" required><br>
+        
+            <label for="password">Enter Your Password</label><br>
+            <input type="password" name="password" id="password" placeholder="Enter Your Password" minlength="8" required><br>
+            <span id="strengthMessage" class="error"></span><br>
+
+            <label for="confirmPassword">Confirm Password</label><br>
+            <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Your Password" minlength="8" required><br>
+
+            <span id="error" class="error"></span>
+
+            <input type="submit" value="Register">
+        </form>
+    </div>
+
+    <script>
+        const passwordInput = document.getElementById('password');
+        const strengthMessage = document.getElementById('strengthMessage');
+
+        passwordInput.addEventListener('input', function() {
+            const password = passwordInput.value;
+            const strength = checkPasswordStrength(password);
+
+            if (strength === 'Weak') {
+                strengthMessage.textContent = 'Password is too weak!';
+                strengthMessage.style.color = 'red';
+            } else if (strength === 'Medium') {
+                strengthMessage.textContent = 'Password strength is medium';
+                strengthMessage.style.color = 'orange';
+            } else if (strength === 'Strong') {
+                strengthMessage.textContent = 'Password is strong!';
+                strengthMessage.style.color = 'green';
+            } else {
+                strengthMessage.textContent = '';
+            }
+        });
+
+        function checkPasswordStrength(password) {
+            const regexWeak = /^(?=.*[a-z]).{8,}$/;
+            const regexMedium = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+            const regexStrong = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#]).{8,}$/;
+
+            if (regexStrong.test(password)) {
+                return 'Strong';
+            } else if (regexMedium.test(password)) {
+                return 'Medium';
+            } else if (regexWeak.test(password)) {
+                return 'Weak';
+            }
+            return '';
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="/css/list.css">
+    <style>
+        /* Styling for the fixed logout button */
+        #logoutButton {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: #f44336; /* Red background */
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #logoutButton:hover {
+            background-color: #d32f2f; /* Darker red on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>My To-Do List</h1>
+
+        <!-- Form to add a new task -->
+        <form id="todoForm" action="/add-task" method="POST">
+            <input type="text" id="taskInput" name="task" placeholder="Add a new task" required>
+            <button type="submit">Add Task</button>
+        </form>
+
+        <!-- Display tasks here -->
+        <ul id="todoList"></ul>
+    </div>
+
+    <!-- Fixed Logout button at the top-right -->
+    <button id="logoutButton" onclick="logout()">Logout</button>
+
+    <script src="/js/script.js"></script>
+
+    <!-- JavaScript to handle logout -->
+    <script>
+        function logout() {
+            window.location.href = '/logout';  // Redirect to the logout route
+        }
+    </script>
+</body>
+</html>
+    
